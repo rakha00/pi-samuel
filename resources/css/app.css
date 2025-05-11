@@ -1,11 +1,31 @@
-@import 'tailwindcss';
+@import "tailwindcss";
+@import "flowbite/src/themes/default";
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap");
 
+@plugin "flowbite/plugin";
+
+@source "../node_modules/flowbite";
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
+    --font-meriweather: "Merriweather", "Georgia", "serif";
+}
+
+:root {
+    --color-honey-50: #fffbeb;
+    --color-honey-100: #fef3c7;
+    --color-honey-200: #fde68a;
+    --color-honey-300: #fcd34d;
+    --color-honey-400: #fbbf24;
+    --color-honey-500: #f59e0b;
+    --color-honey-600: #d97706;
+    --color-honey-700: #b45309;
+    --color-honey-800: #92400e;
+    --color-honey-900: #78350f;
 }
