@@ -4,7 +4,7 @@
             <img class="rounded-t-lg" src="{{ $product->image }}" alt="{{ $product->name }}" />
             <div class="p-5">
                 <h5 class="mb-2 text-2xl font-bold tracking-ti">{{ $product->name }}</h5>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $product->description }}</p>
+                <p class="mb-3 font-normal text-gray-700">{{ $product->description }}</p>
                 <div class="w-full flex justify-between items-center">
                     <p class="text-orange-800 font-bold">Rp{{ number_format($product->price, 0, ',', '.') }}</p>
                     <button wire:click="addToCart({{ $product->id }})"

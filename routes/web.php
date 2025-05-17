@@ -1,11 +1,17 @@
 <?php
 
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+})->name('welcome');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.update-password');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::post('/cart/add', [ProductController::class, 'addToCart'])->name('cart.add');
-Route::delete('/cart/remove', [ProductController::class, 'removeFromCart'])->name('cart.remove');
+require __DIR__ . '/auth.php';

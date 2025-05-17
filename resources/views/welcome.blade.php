@@ -4,6 +4,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>Welcome</title>
+
     @vite('resources/css/app.css', 'resources/js/app.js')
     @filamentStyles
 </head>
@@ -11,7 +15,15 @@
 <body class="bg-orange-50">
     <x-layouts.header />
 
-    <x-auth.login />
+    <div class="fixed top-20 right-4 z-50 space-y-2">
+        @foreach ($errors->all() as $key => $message)
+            <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 5000)"
+                class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded"
+                style="transition: all 0.5s ease-in-out">
+                <p>{{ $message }}</p>
+            </div>
+        @endforeach
+    </div>
 
     {{-- HERO START --}}
     <section class="relative bg-orange-100 overflow-hidden">
