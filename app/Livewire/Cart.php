@@ -12,6 +12,7 @@ class Cart extends Component
     public $cart = [];
     public $order = [];
     public $totalPrice;
+    public $totalQuantity;
 
     public function mount()
     {
@@ -88,10 +89,15 @@ class Cart extends Component
     public function calculateTotal()
     {
         $this->totalPrice = 0;
+        $this->totalQuantity = 0;
         foreach ($this->cart as $item) {
             $this->totalPrice += $item['price'] * $item['quantity'];
+            $this->totalQuantity += $item['quantity'];
         }
-        return $this->totalPrice;
+        return [
+            'total_price' => $this->totalPrice,
+            'total_quantity' => $this->totalQuantity,
+        ];
     }
 
     public function checkout()
