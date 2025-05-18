@@ -31,10 +31,12 @@
                         </div>
                         <ul class="py-2 text-sm text-gray-700">
                             <li>
-                                <a href="/profile" class="block px-4 py-2 hover:bg-gray-100">Profil Saya</a>
+                                <a href="{{ route('profile.edit') }}" class="block px-4 py-2 hover:bg-gray-100">Profil
+                                    Saya</a>
                             </li>
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Pesanan Saya</a>
+                                <a href="{{ route('pesanan-saya') }}" class="block px-4 py-2 hover:bg-gray-100">Pesanan
+                                    Saya</a>
                             </li>
                         </ul>
                         <div class="py-2">
@@ -49,7 +51,7 @@
                     </div>
                 </div>
             @else
-                <div x-data="{ open: false }">
+                <div x-data="{ open: window.location.pathname === '/login' }">
                     <button @click="open = !open"
                         class="hidden lg:inline text-orange-700 hover:text-orange-900 font-medium">Masuk</button>
 

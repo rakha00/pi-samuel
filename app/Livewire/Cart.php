@@ -102,11 +102,59 @@ class Cart extends Component
 
     public function checkout()
     {
-        dd($this->cart);
-        $this->order = $this->cart;
-        $this->cart = [];
-        session(['cart' => $this->cart]);
-        $this->dispatch('close-cart');
+        // Set your Merchant Server Key
+        \Midtrans\Config::$serverKey = config('services.midtrans.server_key');
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = config('services.midtrans.is_production');
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+
+        $params = [
+            'transaction_details' => [
+                'order_id' => 'ORDER-' . time(),
+                'gross_amount' => $this->totalPrice,
+            ],
+            'item_details' => array_map(function ($item) {
+                return [
+                    'id' => $item['id'],
+                    'price' => $item['price'],
+                    'quantity' => $item['quantity'],
+                    'name' => $item['name']
+                ];
+            }, $this->cart),
+            'customer_details' => [
+                'first_name' => auth()->user()->name ?? 'Guest',
+                'email' => auth()->user()->email ?? 'guest@example.com',
+                'phone' => auth()->user()->phone ?? '08123456789',
+                'billing_address' => [
+                    'first_name' => auth()->user()->name ?? 'Guest',
+                    'email' => auth()->user()->email ?? 'guest@example.com',
+                    'phone' => auth()->user()->phone ?? '08123456789',
+                    'address' => 'Default Address',
+                    'city' => 'Default City',
+                    'postal_code' => '12345',
+                    'country_code' => 'IDN'
+                ]
+            ]
+        ];
+
+        try {
+            $paymentUrl = \Midtrans\Snap::createTransaction($params)->redirect_url;
+
+            // Store order details before clearing cart
+            $this->order = $this->cart;
+
+            // Clear the cart
+            $this->cart = [];
+            session(['cart' => $this->cart]);
+
+            // Redirect to Midtrans payment page
+            return redirect()->to($paymentUrl);
+        } catch (\Exception $e) {
+            session()->flash('error', 'Payment failed: ' . $e->getMessage());
+        }
     }
 
     public function render()

@@ -125,7 +125,7 @@
                 </p>
                 <div class="mt-6">
                     <button wire:click="checkout"
-                        class="flex justify-center items-center w-full bg-orange-600 px-6 py-3 rounded-md text-white font-medium">
+                        class="flex justify-center items-center w-full bg-orange-600 px-6 py-3 rounded-md text-white font-medium cursor-pointer">
                         Checkout
                     </button>
                 </div>

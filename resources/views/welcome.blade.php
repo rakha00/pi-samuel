@@ -464,61 +464,6 @@
     <x-layouts.footer />
 
     @filamentScripts
-    <script>
-        // Mengambil elemen-elemen DOM
-        const tabLogin = document.getElementById('tab-login');
-        const tabRegister = document.getElementById('tab-register');
-        const formLogin = document.getElementById('form-login');
-        const formRegister = document.getElementById('form-register');
-
-        // Event listener untuk tab Login
-        tabLogin.addEventListener('click', () => {
-            tabLogin.classList.add('text-orange-600', 'border-orange-500');
-            tabLogin.classList.remove('text-gray-400', 'border-transparent');
-            tabRegister.classList.remove('text-orange-600', 'border-orange-500');
-            tabRegister.classList.add('text-gray-400', 'border-transparent');
-
-            formLogin.classList.remove('hidden');
-            formRegister.classList.add('hidden');
-        });
-
-        // Event listener untuk tab Register
-        tabRegister.addEventListener('click', () => {
-            tabRegister.classList.add('text-orange-600', 'border-orange-500');
-            tabRegister.classList.remove('text-gray-400', 'border-transparent');
-            tabLogin.classList.remove('text-orange-600', 'border-orange-500');
-            tabLogin.classList.add('text-gray-400', 'border-transparent');
-
-            formLogin.classList.add('hidden');
-            formRegister.classList.remove('hidden');
-        });
-
-        // Menambahkan event listener untuk membuka modal
-        const modal = document.getElementById("authentication-modal");
-        const openModalButton = document.querySelector('[data-modal-toggle="authentication-modal"]');
-        const closeModalButton = modal.querySelector("[data-modal-hide='authentication-modal']");
-
-        // Membuka modal saat tombol masuk diklik
-        openModalButton.addEventListener("click", (event) => {
-            event.preventDefault(); // Mencegah tindakan default pada <a> yang menyebabkan reload
-            modal.classList.remove("hidden");
-        });
-
-        // Menutup modal saat tombol tutup diklik
-        closeModalButton.addEventListener("click", () => {
-            modal.classList.add("hidden");
-        });
-
-        // Opsional: Menutup modal jika pengguna mengklik di luar modal
-        window.addEventListener('click', (event) => {
-            if (event.target === modal) {
-                modal.classList.add("hidden");
-            }
-        });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
-
-
 </body>
 
 </html>
