@@ -2,8 +2,8 @@
 
 namespace App\Livewire;
 
+use App\Models\MidtransPendingTransaction;
 use App\Models\Order;
-use App\Models\OrderItem;
 use App\Models\Product;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -150,31 +150,24 @@ class Cart extends Component
         ];
 
         try {
-            // Simpan pesanan utama
-            $order = Order::create([
-                'user_id' => auth()->id(), // Asumsikan pengguna login
+            $snapResponse = \Midtrans\Snap::createTransaction($params);
+            $paymentUrl = $snapResponse->redirect_url;
+            $snapToken = $snapResponse->token; // Ambil snap token
+
+            // Simpan data order ke database sementara
+            MidtransPendingTransaction::create([
+                'user_id' => auth()->id(),
                 'order_number' => $orderNumber,
                 'total_amount' => $this->totalPrice,
-                'status' => 'pending', // Status awal
+                'snap_token' => $snapToken,
+                'cart_items' => json_encode($this->cart), // Simpan sebagai JSON string
             ]);
-
-            // Simpan item pesanan
-            foreach ($this->cart as $item) {
-                OrderItem::create([
-                    'order_id' => $order->id,
-                    'product_id' => $item['id'],
-                    'quantity' => $item['quantity'],
-                    'price' => $item['price'],
-                ]);
-            }
-
-            $paymentUrl = \Midtrans\Snap::createTransaction($params)->redirect_url;
 
             // Clear the cart
             $this->cart = [];
             $this->totalPrice = 0;
             $this->totalQuantity = 0;
-            session(['cart' => $this->cart]);
+            session(['cart' => []]);
 
             // Redirect to Midtrans payment page
             $this->dispatch('open-new-tab', url: $paymentUrl);

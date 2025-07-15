@@ -16,6 +16,12 @@
 	<x-layouts.header />
 
 	<div class="container mx-auto px-4 py-8">
+		<div x-data="{ show: false, message: '', type: '' }" x-show="show" x-transition.opacity
+			x-on:show-message.window="show = true; message = $event.detail.message; type = $event.detail.type; setTimeout(() => show = false, 3000)"
+			:class="{ 'bg-green-100 border-green-400 text-green-700': type === 'success', 'bg-red-100 border-red-400 text-red-700': type === 'error' }"
+			class="border px-4 py-3 rounded relative mb-4 mt-16 z-50" role="alert">
+			<span class="block sm:inline" x-text="message"></span>
+		</div>
 		<h1 class="text-2xl font-bold mb-6">Detail Pesanan #{{ $order->order_number }}</h1>
 
 		<div class="bg-white rounded-lg shadow overflow-hidden p-6">
@@ -76,7 +82,8 @@
 					@forelse($order->orderItems as $item)
 						<tr>
 							<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-								{{ $item->product->name ?? 'Produk Tidak Ditemukan' }}</td>
+								{{ $item->product->name ?? 'Produk Tidak Ditemukan' }}
+							</td>
 							<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
 								Rp{{ number_format($item->price, 0, ',', '.') }}</td>
 							<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $item->quantity }}</td>
@@ -98,10 +105,16 @@
 		</div>
 
 		<div class="mt-6">
-			<a href="{{ route('pesanan-saya') }}"
-				class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
-				&larr; Kembali ke Daftar Pesanan
-			</a>
+			<div class="flex justify-between items-center" x-data="{}"
+				x-on:refresh-order-detail.window="location.reload()">
+				<a href="{{ route('pesanan-saya') }}"
+					class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
+					&larr; Kembali ke Daftar Pesanan
+				</a>
+				<div class="flex space-x-2">
+					<livewire:repay-order :order="$order" />
+				</div>
+			</div>
 		</div>
 	</div>
 

@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('midtrans_pending_transactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('order_number')->unique();
             $table->decimal('total_amount', 10, 2);
-            $table->string('status')->default('pending'); // pending, completed, failed, etc.
-            $table->string('snap_token')->nullable(); // Tambahkan kolom snap_token
+            $table->string('snap_token')->nullable();
+            $table->json('cart_items'); // Store cart items as JSON
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('midtrans_pending_transactions');
     }
 };
