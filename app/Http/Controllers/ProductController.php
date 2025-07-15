@@ -34,7 +34,6 @@ class ProductController extends Controller
         $product = $request->input('product');
         $cart = session('cart', []);
 
-        // Remove product from cart if it exists
         if (isset($cart[$product])) {
             unset($cart[$product]);
             session(['cart' => $cart]);

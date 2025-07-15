@@ -54,7 +54,7 @@
                             Manfaat</a>
                     </div>
 
-                    <div class="mt-8 flex items-center">
+                    <div class="mt-8 mb-20 flex items-center">
                         <div class="flex -space-x-2">
                             <img class="w-10 h-10 rounded-full border-2 border-white"
                                 src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100"
@@ -106,9 +106,9 @@
 
                 <div class="mt-10 lg:mt-0 flex justify-center lg:justify-end">
                     <div class="relative w-72 h-72 md:w-96 md:h-96 rounded-full">
-                        <div class="absolute inset-0 rounded-full bg-orange-200 animate-pulse"></div>
-                        <img src="https://images.pexels.com/photos/6412523/pexels-photo-6412523.jpeg?auto=compress&cs=tinysrgb&w=600"
-                            alt="Madu Samuel Product" class="absolute inset-4 rounded-full object-cover shadow-lg">
+                        <div class="absolute inset-0 rounded-full bg-orange-200 -z-10"></div>
+                        <img src="{{ asset('images/hero.jpg') }}" alt="Madu Samuel Product"
+                            class="w-full h-full rounded-full object-cover shadow-lg">
                     </div>
                 </div>
             </div>
@@ -297,8 +297,8 @@
                 </div>
 
                 <div class="col-span-2">
-                    <img src="https://images.pexels.com/photos/4046486/pexels-photo-4046486.jpeg?auto=compress&cs=tinysrgb&w=600"
-                        alt="Manfaat Madu" class="rounded-lg shadow-md w-full object-cover h-80">
+                    <img src="{{ asset('images/manfaat.jpg') }}" alt="Manfaat Madu"
+                        class="rounded-lg shadow-md w-full object-cover h-80">
                 </div>
             </div>
         </div>
