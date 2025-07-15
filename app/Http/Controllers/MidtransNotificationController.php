@@ -32,8 +32,6 @@ class MidtransNotificationController extends Controller
                 $pendingTransaction = MidtransPendingTransaction::where('order_number', $orderId)->first();
 
                 if (! $pendingTransaction) {
-                    \Log::error("Pending transaction data for {$orderId} not found in database.");
-
                     return response()->json(['message' => 'Pending transaction data not found.'], 404);
                 }
 

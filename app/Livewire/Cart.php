@@ -111,6 +111,13 @@ class Cart extends Component
 
     public function checkout()
     {
+        if (! auth()->check()) {
+            session()->flash('error', 'Anda harus login untuk melakukan checkout.');
+            $this->dispatch('open-cart'); // Keep cart open to show message
+
+            return;
+        }
+
         // Set your Merchant Server Key
         \Midtrans\Config::$serverKey = config('services.midtrans.server_key');
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
