@@ -1,4 +1,5 @@
-<div class="text-orange-700" x-data="{ open: false }" x-on:open-cart="open = true">
+<div class="text-orange-700" x-data="{ open: false }" x-on:open-cart="open = true"
+    x-on:open-new-tab.window="window.open($event.detail.url, '_blank')">
     <!-- Tombol ikon keranjang -->
     <button type="button" x-on:click="open = true" class="relative">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -22,10 +23,10 @@
 
     <!-- Drawer dari kanan -->
     <div class="fixed top-0 right-0 h-full bg-blue-400 shadow-lg z-50 transform transition-transform duration-300 ease-in-out
-                w-[80%] sm:w-[400px]"
-        x-show="open" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="translate-x-full"
-        x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-in duration-300"
-        x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full">
+                w-[80%] sm:w-[400px]" x-show="open" x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0"
+        x-transition:leave="transition ease-in duration-300" x-transition:leave-start="translate-x-0"
+        x-transition:leave-end="translate-x-full">
         <div class="h-full flex flex-col bg-white shadow-xl overflow-y-auto">
             <div class="flex-1 py-6 overflow-y-auto px-4 sm:px-6">
                 <div class="flex items-start justify-between">
@@ -56,8 +57,7 @@
 
                                             <div class="ml-4 flex-1 flex flex-col">
                                                 <div>
-                                                    <div
-                                                        class="flex justify-between text-base font-medium text-gray-900">
+                                                    <div class="flex justify-between text-base font-medium text-gray-900">
                                                         <h3>{{ $item['name'] }}</h3>
                                                         <p class="ml-4">
                                                             <span>Rp{{ number_format($item['price'], 0, ',', '.') }}</span>
@@ -87,8 +87,7 @@
                                                     </div>
 
                                                     <div class="flex">
-                                                        <button wire:click="removeFromCart({{ $item['id'] }})"
-                                                            type="button"
+                                                        <button wire:click="removeFromCart({{ $item['id'] }})" type="button"
                                                             class="font-medium text-red-600 hover:text-red-500">
                                                             Hapus
                                                         </button>

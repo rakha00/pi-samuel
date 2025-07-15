@@ -151,7 +151,7 @@ class Cart extends Component
             session(['cart' => $this->cart]);
 
             // Redirect to Midtrans payment page
-            return redirect()->to($paymentUrl);
+            $this->dispatch('open-new-tab', url: $paymentUrl);
         } catch (\Exception $e) {
             session()->flash('error', 'Payment failed: ' . $e->getMessage());
         }
