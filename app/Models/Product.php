@@ -10,5 +10,5 @@ class Product extends Model
     /** @use HasFactory<\Database\Factories\ProductFactory> */
     use HasFactory;
 
-    protected $guarded = ["created_at", "updated_at"];
+    protected $guarded = ['created_at', 'updated_at'];
 }

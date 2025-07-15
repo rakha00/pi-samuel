@@ -2,6 +2,8 @@
 
 namespace App\Livewire;
 
+use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\Product;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -9,9 +11,13 @@ use Livewire\Component;
 class Cart extends Component
 {
     public $product;
+
     public $cart = [];
+
     public $order = [];
+
     public $totalPrice;
+
     public $totalQuantity;
 
     public function mount()
@@ -38,12 +44,12 @@ class Cart extends Component
             $this->increaseQuantity($productId);
         }
 
-        if (!$existingProduct) {
+        if (! $existingProduct) {
             $this->cart[] = [
                 'id' => $productId,
                 'name' => $name,
                 'price' => $price,
-                'quantity' => $quantity
+                'quantity' => $quantity,
             ];
             session(['cart' => $this->cart]);
             $this->calculateTotal();
@@ -68,6 +74,7 @@ class Cart extends Component
             if ($item['id'] === $productId) {
                 $item['quantity']++;
             }
+
             return $item;
         }, $this->cart);
         session(['cart' => $this->cart]);
@@ -80,6 +87,7 @@ class Cart extends Component
             if ($item['id'] === $productId) {
                 $item['quantity'] = max(1, $item['quantity'] - 1);
             }
+
             return $item;
         }, $this->cart);
         session(['cart' => $this->cart]);
@@ -94,6 +102,7 @@ class Cart extends Component
             $this->totalPrice += $item['price'] * $item['quantity'];
             $this->totalQuantity += $item['quantity'];
         }
+
         return [
             'total_price' => $this->totalPrice,
             'total_quantity' => $this->totalQuantity,
@@ -113,7 +122,7 @@ class Cart extends Component
 
         $params = [
             'transaction_details' => [
-                'order_id' => 'ORDER-' . time(),
+                'order_id' => $orderNumber = 'ORDER-'.uniqid(), // Gunakan order_number yang unik
                 'gross_amount' => $this->totalPrice,
             ],
             'item_details' => array_map(function ($item) {
@@ -121,7 +130,7 @@ class Cart extends Component
                     'id' => $item['id'],
                     'price' => $item['price'],
                     'quantity' => $item['quantity'],
-                    'name' => $item['name']
+                    'name' => $item['name'],
                 ];
             }, $this->cart),
             'customer_details' => [
@@ -135,26 +144,42 @@ class Cart extends Component
                     'address' => 'Default Address',
                     'city' => 'Default City',
                     'postal_code' => '12345',
-                    'country_code' => 'IDN'
-                ]
-            ]
+                    'country_code' => 'IDN',
+                ],
+            ],
         ];
 
         try {
-            $paymentUrl = \Midtrans\Snap::createTransaction($params)->redirect_url;
+            // Simpan pesanan utama
+            $order = Order::create([
+                'user_id' => auth()->id(), // Asumsikan pengguna login
+                'order_number' => $orderNumber,
+                'total_amount' => $this->totalPrice,
+                'status' => 'pending', // Status awal
+            ]);
 
-            // Store order details before clearing cart
-            $this->order = $this->cart;
+            // Simpan item pesanan
+            foreach ($this->cart as $item) {
+                OrderItem::create([
+                    'order_id' => $order->id,
+                    'product_id' => $item['id'],
+                    'quantity' => $item['quantity'],
+                    'price' => $item['price'],
+                ]);
+            }
+
+            $paymentUrl = \Midtrans\Snap::createTransaction($params)->redirect_url;
 
             // Clear the cart
             $this->cart = [];
             $this->totalPrice = 0;
+            $this->totalQuantity = 0;
             session(['cart' => $this->cart]);
 
             // Redirect to Midtrans payment page
             $this->dispatch('open-new-tab', url: $paymentUrl);
         } catch (\Exception $e) {
-            session()->flash('error', 'Payment failed: ' . $e->getMessage());
+            session()->flash('error', 'Payment failed: '.$e->getMessage());
         }
     }
 

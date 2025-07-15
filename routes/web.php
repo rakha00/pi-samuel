@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\MidtransNotificationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -18,6 +18,7 @@ Route::get('/csrf-token', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/pesanan-saya', [OrderController::class, 'index'])->name('pesanan-saya');
+    Route::get('/pesanan-saya/{order}', [OrderController::class, 'show'])->name('orders.show');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -25,4 +26,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__ . '/auth.php';
+Route::post('/midtrans-notification', [MidtransNotificationController::class, 'handle']);
+
+require __DIR__.'/auth.php';

@@ -25,7 +25,7 @@ class ProductController extends Controller
 
         return response()->json([
             'message' => 'Product added to cart successfully',
-            'cart' => $cart
+            'cart' => $cart,
         ]);
     }
 
@@ -37,15 +37,16 @@ class ProductController extends Controller
         if (isset($cart[$product])) {
             unset($cart[$product]);
             session(['cart' => $cart]);
+
             return response()->json([
                 'message' => 'Product removed from cart successfully',
-                'cart' => $cart
+                'cart' => $cart,
             ]);
         }
 
         return response()->json([
             'message' => 'Product not found in cart',
-            'cart' => $cart
+            'cart' => $cart,
         ], 404);
     }
 }

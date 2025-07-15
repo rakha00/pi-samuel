@@ -20,11 +20,11 @@ class ProductFactory extends Factory
         $name = $this->faker->sentence(2);
 
         return [
-            "name" => $name,
-            "description" => $this->faker->text(),
-            "image" => "https://placehold.co/400",
-            "slug" => Str::slug($name),
-            "price" => $this->faker->numberBetween(10000, 100000),
+            'name' => $name,
+            'description' => $this->faker->text(),
+            'image' => 'https://placehold.co/400',
+            'slug' => Str::slug($name),
+            'price' => $this->faker->numberBetween(10000, 100000),
         ];
     }
 }
