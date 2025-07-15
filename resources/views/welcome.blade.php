@@ -12,7 +12,7 @@
     @filamentStyles
 </head>
 
-<body class="bg-orange-50">
+<body class="bg-orange-50 overflow-x-hidden">
     <x-layouts.header />
 
     <div class="fixed top-20 right-4 z-50 space-y-2">
@@ -26,78 +26,78 @@
     </div>
 
     {{-- HERO START --}}
-    <section class="relative bg-orange-100 overflow-hidden">
+    <section class="relative bg-orange-100 overflow-hidden min-h-screen flex items-center">
         <div class="absolute inset-0 overflow-hidden">
             <img src="https://images.pexels.com/photos/9464167/pexels-photo-9464167.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 alt="orange background" class="w-full h-full object-cover opacity-20">
             <div class="absolute inset-0 bg-gradient-to-r from-orange-500/40 to-orange-700/40"></div>
         </div>
 
-        <div class="relative mt-20 lg:mt-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
+        <div class="relative lg:mt-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
             <div class="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
-                <div>
+                <div class="text-center lg:text-left">
                     <h1
-                        class=" text-orange-900 mb-4 text-3xl md:text-4xl lg:text-5xl font-meriweather font-bold leading-tight">
+                        class="text-orange-900 mb-4 text-4xl md:text-5xl lg:text-6xl font-meriweather font-extrabold leading-tight">
                         Madu Murni <br class="hidden sm:block">
                         <span class="text-orange-600">Berkualitas Premium</span>
                     </h1>
-                    <p class="text-lg md:text-xl text-orange-800 mb-8 max-w-2xl">
+                    <p class="text-lg md:text-xl text-orange-800 mb-8 max-w-2xl mx-auto lg:mx-0">
                         Nikmati manisnya kehidupan dengan madu asli dari hutan Indonesia yang diproses secara alami dan
                         kaya akan nutrisi.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                         <a href="#products"
-                            class="px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 bg-orange-600 text-white hover:bg-orange-700 focus:ring-orange-500 text-center">Lihat
+                            class="px-6 py-3 rounded-lg font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 bg-orange-600 text-white hover:bg-orange-700 focus:ring-orange-500 text-center text-lg">Lihat
                             Produk</a>
                         <a href="#features"
-                            class="px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 bg-white text-orange-700 border border-orange-300 hover:bg-orange-50 focus:ring-orange-300 text-center">Pelajari
+                            class="px-6 py-3 rounded-lg font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 bg-white text-orange-700 border border-orange-300 hover:bg-orange-50 focus:ring-orange-300 text-center text-lg">Pelajari
                             Manfaat</a>
                     </div>
 
-                    <div class="mt-8 mb-20 flex items-center">
+                    <div class="mt-12 flex items-center justify-center lg:justify-start">
                         <div class="flex -space-x-2">
-                            <img class="w-10 h-10 rounded-full border-2 border-white"
+                            <img class="w-12 h-12 rounded-full border-2 border-white shadow-md"
                                 src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100"
                                 alt="Customer">
-                            <img class="w-10 h-10 rounded-full border-2 border-white"
+                            <img class="w-12 h-12 rounded-full border-2 border-white shadow-md"
                                 src="https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=100"
                                 alt="Customer">
-                            <img class="w-10 h-10 rounded-full border-2 border-white"
+                            <img class="w-12 h-12 rounded-full border-2 border-white shadow-md"
                                 src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=100"
                                 alt="Customer">
                             <div
-                                class="w-10 h-10 rounded-full border-2 border-white bg-orange-600 flex items-center justify-center text-xs font-medium text-white">
+                                class="w-12 h-12 rounded-full border-2 border-white bg-orange-600 flex items-center justify-center text-sm font-semibold text-white shadow-md">
                                 +99</div>
                         </div>
                         <div class="ml-4">
                             <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400"
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-400"
                                     viewBox="0 0 20 20" fill="currentColor">
                                     <path
                                         d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                 </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400"
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-400"
                                     viewBox="0 0 20 20" fill="currentColor">
                                     <path
                                         d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                 </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400"
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-400"
                                     viewBox="0 0 20 20" fill="currentColor">
                                     <path
                                         d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                 </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400"
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-400"
                                     viewBox="0 0 20 20" fill="currentColor">
                                     <path
                                         d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                 </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400"
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-400"
                                     viewBox="0 0 20 20" fill="currentColor">
                                     <path
                                         d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                 </svg>
                             </div>
-                            <p class="text-sm text-orange-800">Dari <span class="font-medium">532</span> pelanggan
+                            <p class="text-base text-orange-800">Dari <span class="font-bold">532</span> pelanggan
                                 puas
                             </p>
                         </div>
@@ -105,7 +105,7 @@
                 </div>
 
                 <div class="mt-10 lg:mt-0 flex justify-center lg:justify-end">
-                    <div class="relative w-72 h-72 md:w-96 md:h-96 rounded-full">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full shadow-lg">
                         <div class="absolute inset-0 rounded-full bg-orange-200 -z-10"></div>
                         <img src="{{ asset('images/hero.jpg') }}" alt="Madu Samuel Product"
                             class="w-full h-full rounded-full object-cover shadow-lg">
@@ -126,7 +126,7 @@
 
     {{-- PRODUCT START --}}
     <section class="container mx-auto bg-white md:pb-28 pt-24 pb-10" id="produk">
-        <div class="w-full flex flex-col items-center">
+        <div class="w-full flex flex-col items-center mb-8">
             <h2
                 class="text-orange-800 text-center text-2xl md:text-3xl lg:text-5xl font-meriweather font-bold leading-tight my-4">
                 Koleksi
@@ -145,7 +145,7 @@
     {{-- PRODUCT END --}}
 
     {{-- ABOUT US START --}}
-    <section id="about" class="container mx-auto bg-orange-50 pt-24">
+    <section id="about" class="container mx-auto bg-orange-50 pt-24 pb-24">
         <div class="w-full flex flex-col items-center mb-12">
             <h2
                 class="text-orange-800 text-center text-2xl md:text-3xl lg:text-5xl font-meriweather font-bold leading-tight my-4">
@@ -298,7 +298,7 @@
 
                 <div class="col-span-2">
                     <img src="{{ asset('images/manfaat.jpg') }}" alt="Manfaat Madu"
-                        class="rounded-lg shadow-md w-full object-cover h-80">
+                        class="rounded-lg shadow-md w-full object-cover max-h-80">
                 </div>
             </div>
         </div>
@@ -306,7 +306,7 @@
     {{-- ABOUT US END --}}
 
     {{-- TESTIMONIAL START --}}
-    <section id="testimonials" class="container mx-auto bg-white pt-24">
+    <section id="testimonials" class="container mx-auto bg-white pt-24 pb-24">
         <div class="w-full flex flex-col items-center mb-12 lg:mt-12">
             <h2
                 class="text-orange-800 text-center text-2xl md:text-3xl lg:text-5xl font-meriweather font-bold leading-tight my-4">
@@ -462,6 +462,8 @@
     {{-- TESTIMONIAL END --}}
 
     <x-layouts.footer />
+
+    <x-auth.login />
 
     @filamentScripts
 </body>

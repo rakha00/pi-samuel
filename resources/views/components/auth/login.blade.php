@@ -1,5 +1,6 @@
 <!-- Main modal -->
-<div x-show="open"
+<div x-data="{ showModal: false }" x-show="showModal"
+    @open-modal.window="if ($event.detail === 'authentication-modal') showModal = true"
     class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full h-screen bg-gray-800/50">
     <div class="relative p-4 w-full max-w-md">
         <!-- Modal content -->
@@ -114,7 +115,7 @@
                         Daftar
                     </button>
                 </form>
-                <button type="button" @click="open = !open"
+                <button type="button" @click="showModal = false"
                     class="w-full px-4 py-2 mt-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 bg-white text-orange-700 border border-orange-300 hover:bg-orange-50 focus:ring-orange-300">
                     Tutup
                     <span class="sr-only">Close modal</span>
