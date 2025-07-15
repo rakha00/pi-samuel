@@ -148,6 +148,7 @@ class Cart extends Component
 
             // Clear the cart
             $this->cart = [];
+            $this->totalPrice = 0;
             session(['cart' => $this->cart]);
 
             // Redirect to Midtrans payment page
