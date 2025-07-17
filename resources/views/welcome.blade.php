@@ -54,7 +54,7 @@
                             Manfaat</a>
                     </div>
 
-                    <div class="mt-12 flex items-center justify-center lg:justify-start">
+                    <div class="mt-12 mb-24 flex items-center justify-center lg:justify-start">
                         <div class="flex -space-x-2">
                             <img class="w-12 h-12 rounded-full border-2 border-white shadow-md"
                                 src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100"
