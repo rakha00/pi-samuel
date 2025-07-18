@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -14,10 +13,10 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->string('order_number')->unique();
+            $table->string('order_number', 100)->unique();
             $table->decimal('total_amount', 10, 2);
-            $table->string('status')->default('pending'); // pending, completed, failed, etc.
-            $table->string('snap_token')->nullable(); // Tambahkan kolom snap_token
+            $table->string('status', 20)->default('pending'); // pending, completed, failed, etc.
+            $table->string('snap_token', 255)->nullable(); // Tambahkan kolom snap_token
             $table->timestamps();
         });
     }
