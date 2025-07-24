@@ -8,7 +8,7 @@
 
     <title>Welcome</title>
 
-    @vite('resources/css/app.css', 'resources/js/app.js')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @filamentStyles
 </head>
 
@@ -73,8 +73,9 @@
                                 </button>
 
                                 @if (session('status') === 'profile-updated')
-                                    <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
-                                        class="text-sm text-gray-600">{{ __('Saved.') }}</p>
+                                    <p x-data="{ show: true }" x-show="show" x-transition
+                                        x-init="setTimeout(() => show = false, 2000)" class="text-sm text-gray-600">
+                                        {{ __('Saved.') }}</p>
                                 @endif
                             </div>
                         </form>
@@ -139,8 +140,9 @@
                                 </button>
 
                                 @if (session('status') === 'password-updated')
-                                    <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
-                                        class="text-sm text-gray-600">{{ __('Saved.') }}</p>
+                                    <p x-data="{ show: true }" x-show="show" x-transition
+                                        x-init="setTimeout(() => show = false, 2000)" class="text-sm text-gray-600">
+                                        {{ __('Saved.') }}</p>
                                 @endif
                             </div>
                         </form>
@@ -180,8 +182,8 @@
                                 x-transition:leave="transition ease-in duration-200"
                                 x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
                                 x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                                class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title"
-                                role="dialog" aria-modal="true">
+                                class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog"
+                                aria-modal="true">
                                 <div
                                     class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
                                     <div

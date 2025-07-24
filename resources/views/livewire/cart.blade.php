@@ -70,7 +70,7 @@
                                             class="py-6 flex flex-col sm:flex-row items-center sm:items-start border-b border-gray-100 last:border-b-0">
                                             <div
                                                 class="flex-shrink-0 w-28 h-28 sm:w-24 sm:h-24 border border-gray-200 rounded-lg overflow-hidden mb-4 sm:mb-0 shadow-sm">
-                                                <img src="{{ $product->find($item['id'])->image }}"
+                                                <img src="{{ asset('storage/' . $product->find($item['id'])->image) }}" 
                                                     class="w-full h-full object-cover">
                                             </div>
 

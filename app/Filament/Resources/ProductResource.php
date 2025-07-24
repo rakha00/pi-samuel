@@ -30,7 +30,7 @@ class ProductResource extends Resource
                                     ->required()
                                     ->maxLength(100)
                                     ->live(true)
-                                    ->afterStateUpdated(fn(string $operation, $state, Forms\Set $set) => $operation === 'create' ? $set('slug', Str::slug($state)) : null),
+                                    ->afterStateUpdated(fn(Forms\Set $set, ?string $state) => $set('slug', Str::slug($state))),
                                 Forms\Components\TextInput::make('slug')
                                     ->required()
                                     ->maxLength(100)

@@ -8,7 +8,7 @@
 
     <title>Welcome</title>
 
-    @vite('resources/css/app.css', 'resources/js/app.js')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @filamentStyles
 </head>
 
@@ -53,25 +53,25 @@
                             </td>
                             <td class="px-6 py-4">
                                 <span x-data="{
-                                                                    getStatusClasses() {
-                                                                        switch ('{{ $order->status }}') {
-                                                                            case 'pending':
-                                                                                return 'bg-yellow-100 text-yellow-800';
-                                                                            case 'processing':
-                                                                                return 'bg-blue-100 text-blue-800';
-                                                                            case 'completed':
-                                                                                return 'bg-green-100 text-green-800';
-                                                                            case 'failed':
-                                                                                return 'bg-red-100 text-red-800';
-                                                                            case 'expired':
-                                                                                return 'bg-purple-100 text-purple-800';
-                                                                            case 'cancelled':
-                                                                                return 'bg-gray-100 text-gray-800';
-                                                                            default:
-                                                                                return 'bg-red-100 text-red-800';
+                                                                        getStatusClasses() {
+                                                                            switch ('{{ $order->status }}') {
+                                                                                case 'pending':
+                                                                                    return 'bg-yellow-100 text-yellow-800';
+                                                                                case 'processing':
+                                                                                    return 'bg-blue-100 text-blue-800';
+                                                                                case 'completed':
+                                                                                    return 'bg-green-100 text-green-800';
+                                                                                case 'failed':
+                                                                                    return 'bg-red-100 text-red-800';
+                                                                                case 'expired':
+                                                                                    return 'bg-purple-100 text-purple-800';
+                                                                                case 'cancelled':
+                                                                                    return 'bg-gray-100 text-gray-800';
+                                                                                default:
+                                                                                    return 'bg-red-100 text-red-800';
+                                                                            }
                                                                         }
-                                                                    }
-                                                                }"
+                                                                    }"
                                     class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full"
                                     :class="getStatusClasses()">
                                     {{ ucfirst($order->status) }}

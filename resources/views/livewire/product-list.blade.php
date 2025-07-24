@@ -4,7 +4,7 @@
         <div
             class="w-full max-w-sm bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden flex flex-col transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
             <div class="relative overflow-hidden w-full h-48">
-                <img class="w-full h-full object-cover rounded-t-xl" src="{{ $product->image }}"
+                <img class="w-full h-full object-cover rounded-t-xl" src="{{ asset('storage/' . $product->image) }}"
                     alt="{{ $product->name }}" />
             </div>
             <div class="p-5 flex flex-col flex-grow">

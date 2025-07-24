@@ -81,6 +81,13 @@
                                     <a href="{{ route('pesanan-saya') }}" class="block px-4 py-2 hover:bg-gray-100">Pesanan
                                         Saya</a>
                                 </li>
+                                @if (auth()->user()->role == 'admin')
+                                    <li>
+                                        <a href="{{ route('filament.admin.pages.dashboard') }}"
+                                            class="block px-4 py-2 hover:bg-gray-100">Admin
+                                            Dashboard</a>
+                                    </li>
+                                @endif
                             </ul>
                             <div class="py-2">
                                 <form method="POST" action="{{ route('logout') }}">
@@ -156,6 +163,13 @@
                                     <a href="{{ route('pesanan-saya') }}" class="block px-4 py-2 hover:bg-gray-100">Pesanan
                                         Saya</a>
                                 </li>
+                                @if (auth()->user()->role == 'admin')
+                                    <li>
+                                        <a href="{{ route('filament.admin.pages.dashboard') }}"
+                                            class="block px-4 py-2 hover:bg-gray-100">Admin
+                                            Dashboard</a>
+                                    </li>
+                                @endif
                             </ul>
                             <div class="py-2">
                                 <form method="POST" action="{{ route('logout') }}">
