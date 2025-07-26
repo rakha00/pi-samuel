@@ -8,9 +8,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
-Route::get('/login', function () {
-    return view('welcome');
-})->name('login');
 
 Route::get('/csrf-token', function () {
     return response()->json(['csrf_token' => csrf_token()]);
@@ -28,4 +25,4 @@ Route::middleware('auth')->group(function () {
 
 Route::post('/midtrans-notification', [MidtransNotificationController::class, 'handle']);
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

@@ -8,7 +8,9 @@
 
     <title>Welcome</title>
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @endif
     @filamentStyles
 </head>
 
@@ -75,7 +77,8 @@
                                 @if (session('status') === 'profile-updated')
                                     <p x-data="{ show: true }" x-show="show" x-transition
                                         x-init="setTimeout(() => show = false, 2000)" class="text-sm text-gray-600">
-                                        {{ __('Saved.') }}</p>
+                                        {{ __('Saved.') }}
+                                    </p>
                                 @endif
                             </div>
                         </form>
@@ -142,7 +145,8 @@
                                 @if (session('status') === 'password-updated')
                                     <p x-data="{ show: true }" x-show="show" x-transition
                                         x-init="setTimeout(() => show = false, 2000)" class="text-sm text-gray-600">
-                                        {{ __('Saved.') }}</p>
+                                        {{ __('Saved.') }}
+                                    </p>
                                 @endif
                             </div>
                         </form>
